@@ -28,7 +28,7 @@
 
 2.  Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-    ![Bagan Flow](public\images\baganFlow.png)
+    ![Bagan Flow](public/images/baganFlow.png)
 
     -   Pertama client akan melakukan request ke aplikasi (server)
     -   Pada urls.py tersebut lah request client akan diterima diarahkan ke view yang tepat

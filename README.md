@@ -13,7 +13,7 @@
     -   Buat model Item pada file models.py dengan attribut name (charfield), amount (integer), description (text field), price (integer), dan category (charfield)
     -   Melakukan pembuatan file migrasi dan menerapkan file migrasi tersebut
     -   Menghubungkan view dan template dengan membuat fungsi pada view untuk merender main.html yang tadi sudah dibuat
-    -   Mengonfigurasi routing dengan membuat file urls.py di aplikasi main lalu menambahkan path '' atau home yang akan menjalankan fungsi pada view yang tadi sudah dibuat
+    -   Mengonfigurasi routing dengan membuat file urls.py di aplikasi main lalu menambahkan path '/main' yang akan menjalankan fungsi pada view yang tadi sudah dibuat
     -   Setelah itu menambahkan routing pada url proyek dengan menambahkan path '' atau home yang akan menjalankan/impor (include) rute aplikasi main
     -   Aplikasi sudah dibisa dijalankan dengan `python manage.py runserver`
     -   Mendeploy pada adaptable dengan cara:
@@ -28,7 +28,7 @@
 
 2.  Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-    ![Bagan Flow](public/images/baganFlow.png)
+    ![Flow image](public/images/flow.png)
 
     -   Pertama client akan melakukan request ke aplikasi (server)
     -   Pada urls.py tersebut lah request client akan diterima diarahkan ke view yang tepat

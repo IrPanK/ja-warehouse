@@ -14,14 +14,14 @@
     -   Melakukan pembuatan file migrasi dan menerapkan file migrasi tersebut
     -   Menghubungkan view dan template dengan membuat fungsi pada view untuk merender main.html yang tadi sudah dibuat
     -   Mengonfigurasi routing dengan membuat file urls.py di aplikasi main lalu menambahkan path '/main' yang akan menjalankan fungsi pada view yang tadi sudah dibuat
-    -   Setelah itu menambahkan routing pada url proyek dengan menambahkan path '' atau home yang akan menjalankan/impor (include) rute aplikasi main
+    -   Setelah itu menambahkan routing pada url proyek dengan menambahkan path '/main' yang akan menjalankan/impor (include) rute aplikasi main
     -   Aplikasi sudah dibisa dijalankan dengan `python manage.py runserver`
     -   Mendeploy pada adaptable dengan cara:
         -   Login dengan akun github
         -   Membuat/menambahkan aplikasi baru (klik new app) dengan menyambungkan repo yang sudah dibuat (ja-warehouse)
         -   Pilih branch main (branch production)
         -   Pilih template dengan python dan database postgreSQL
-        -   mengubah python version dengan versi yg ada di device saya (3.10) dan ubah start command dengan `python manage.py migrate && gunicorn shopping_list.wsgi`
+        -   mengubah python version dengan versi yg ada di device saya (3.10) dan ubah start command dengan `python manage.py migrate && gunicorn ja_warehouse.wsgi`
         -   memilih nama dengan nama ja-warehouse
         -   checklist HTTP Listener on PORT
         -   lalu deploy app

@@ -1,3 +1,5 @@
+# TUGAS 2
+
 1.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
     -   Pastikan sudah terinstall python dalam device
@@ -69,3 +71,27 @@
     -   MVC : Terdapat controller sebagai pengelola alur aplikasi dan perantara antara model dan view
     -   MVT : Terdapat template sebagai komponen untuk merender tampilan, dan view memiliki logika lebih untuk penampilan data
     -   MVVM : Terdapat ViewModel sebagai perantara yang mengonversi data dari model ke format yang lebih sesuai untuk tampilan
+
+---
+
+# Tugas 3
+
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+
+    Perbedaannya adalah untuk POST biasanya kita bisa mengirimkan data dari sisi client, sedangkan method GET hanya untuk mendapatkan data dari sisi server
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+
+    XML mengirim data yang tiap datanya dibungkus dengan tag yang mendeskripkan dirinya sendiri.
+    JSON mengirim data dengan bentuk object pada javascripts, yang mempunyai key dan value yang dimana key nya tersebut mendeskripsikan dirinya sendiri
+    HTML mengirim data yang secara langsung diolah oleh web sehingga langsung menampilkan data secara visual
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+
+    Mudah dibaca dan dimainkan untuk menampilkan data di FE
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    - ASDSADKJSH
+
+5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam

@@ -9,3 +9,4 @@ class Item(models.Model):
     description = models.TextField()
     price = models.IntegerField()
     category = models.CharField(max_length=255)
+    add_date = models.DateField(auto_now_add=True)

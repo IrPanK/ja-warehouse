@@ -13,24 +13,44 @@
     <tr>
         <th>Name</th>
         <th>Price</th>
+        <th>Amount</th>
         <th>Description</th>
         <th>Date Added</th>
+        <th>Action</th>
     </tr>
 
     {% for item in items %}
     <tr>
         <td>{{item.name}}</td>
         <td>{{item.price}}</td>
+        <td>{{item.amount}}</td>
         <td>{{item.description}}</td>
-        <td>{{item.date_added}}</td>
+        <td>{{item.add_date}}</td>
+        <td>
+            <a href="{% url 'main:decrement_amount' id=item.pk %}">
+                <button>-</button>
+            </a>
+            <a href="{% url 'main:increment_amount' id=item.pk %}">
+                <button>+</button>
+            </a>
+            <a href="{% url 'main:delete_item' id=item.pk %}">
+                <button>Delete</button>
+            </a>
+        </td>
     </tr>
     {% endfor %}
 </table>
 
 <br />
 
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
 <a href="{% url 'main:create_item' %}">
     <button>Add New Item</button>
+</a>
+
+<a href="{% url 'main:logout' %}">
+    <button>Logout</button>
 </a>
 
 {% endblock content %}

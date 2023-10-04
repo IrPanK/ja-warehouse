@@ -192,3 +192,62 @@
     - Menjalankan `python manage.py makemigrations` untuk membuat file migrasi, set default value dengan 1 (user pertama)
     - Mengaplikasikan file migrasi yang baru dengan menjalankan `python manage.py migrate`
     - Merubah logic show_main dengan hanya get Item data yang dimiliki oleh user
+
+---
+
+# TUGAS 5
+
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+    - Id (#). Karena id hanya bisa digunakan oleh satu element (unik), maka id akan bermanfaat untuk mendapatkan element dengan id yang spesifik. Id dapat digunakan untuk styling atau manipulasi satu element spesifik tertentu
+
+    - Class (.). Karena class dapat digunakan oleh banyak element, maka class bermanfaat untuk mendapatkan element dengan class tertentu. Biasanya element dengan class yang sama memiliki karakteristik atau fungsi yang sama. Class dapat digunakan untuk styling atau manipulasi kelompok element yang memiliki karakteristik atau fungsi yang sama. Class biasanya juga digunakan untuk menerapkan styling yang sama terhadap element-element yang memiliki class yang sama
+
+    - Element. bermanfaat untuk mendapatkan semua element yang memiliki tag HTML yang sama. Element selector dapat digunakan untuk styling atau manipulasi element/tag HTML yang sama
+
+2. Jelaskan HTML5 Tag yang kamu ketahui.
+
+    - `<header>`. Merupakan tag yang mendeskripsikan bahwa dia adalah bagian header (atas)
+    - `<footer>`. Merupakan tag yang mendeskripsikan bahwa dia adalah bagian footer (bawah)
+    - `<nav>`. Merupakan tag yang mendeskripsikan bahwa dia adalah navigasi
+    - `<section>`. Merupakan tag yang mendeskripsikan bahwa dia adalah satu section tersendiri (bagian)
+    - `<aside>`. Merupakan tag yang mendeskripsikan bahwa dia adalah konten sampingan, biasanya untuk sidebar
+    - `<article>`. Merupakan tag yang mendeskripsikan bahwa dia adalah artikel (memiliki banyak bacaan atau teks)
+    - `<main>`. Merupakan tag yang mendeskripsikan bahwa dia adalah konten utama
+    - `<audio>`. Merupakan tag yang mendeskripsikan bahwa dia adalah audio dan untuk menyematkan audio
+    - `<video>`. Merupakan tag yang mendeskripsikan bahwa dia adalah video dan untuk menyematkan video
+    - `<canvas>`. Merupakan tag yang mendeskripsikan bahwa dia adalah sebuah area gambar (canvas) yang bisa untuk digambar
+    - `<a>`. Merupakan tag yang mendeskripsikan bahwa dia adalah tautan
+    - `<p>`. Merupakan tag yang mendeskripsikan bahwa dia adalah suatu paragraf
+    - `<form>`. Merupakan tag yang mendeskripsikan bahwa dia adalah form untuk mengisi inputan
+    - `<input>`. Merupakan tag yang mendeskripsikan bahwa dia adalah inputan
+    - `<textarea>`. Merupakan tag yang mendeskripsikan bahwa dia adalah inputan untuk textarea
+    - `<select>`. Merupakan tag untuk membuat dropdown
+    - `<label>`. Merupakan tag yang mendeskripsikan bahwa dia adalah label untuk sebuah input
+    - `<button>`. Merupakan tag yang mendeskripsikan bahwa dia adalah tombol
+    - `<iframe>`. Merupakan tag untuk menyematkan dokumen HTML dari sumber luar
+
+3. Jelaskan perbedaan antara margin dan padding.
+
+    - Margin merupakan ruang yang berada diluar element. Sehingga margin lebih tepat digunakan untuk memberikan jarak antar element
+
+    - Padding merupakan ruang antara isi element (content) dengan ujung element (border). Sehingga padding lebih tepat digunakan untuk memberikan jarak antara content dengan border (memberikan white space).
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+    - CSS Tailwind merupakan utility-first CSS framework yang memberikan class-class spesifik yang memiliki suatu styling sendiri dalam CSS. Sehingga membuat developer bisa membuat komponen sendiri dari awal dengan fleksibel
+
+    - Bootstrap merupakan component-based framework yang menyediakan pre-designed dan pre-styled komponen. Sehingga mempermudah dan mempercepat developer dalam membuat suatu komponen. Akan tetapi, kekurangannya komponen menjadi tidak mudah dikostumisasi
+
+    - Sebaiknya menggunakan Tailwind CSS pada saat ingin membuat tampilan yang full bisa di custom
+
+    - Sebaiknya menggunakan Bootstrap pada saat ingin membuat tampilan dengan cepat dan mudah
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    - Masukkan script CDN Tailwind CSS ke dalam tag head pada base.html
+    - Tambahkan juga script tailwind config
+    - Edit tampilan login.html menggunakan tailwind
+    - Edit tampilan register.html menggunakan tailwind
+    - Edit tampilan main.html menggunakan tailwind
+    - Edit tampilan create_item.html menggunakan tailwind

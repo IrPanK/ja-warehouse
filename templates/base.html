@@ -5,9 +5,25 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {% block meta %} {% endblock meta %}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            darkBrown: "#65451F",
+                            brown: "#765827",
+                            lightBrown: "#C8AE7D",
+                            cream: "#EAC696",
+                            blueLink: "#0077ff",
+                        },
+                    },
+                },
+            };
+        </script>
     </head>
 
-    <body>
+    <body class="bg-darkBrown">
         {% block content %} {% endblock content %}
     </body>
 </html>

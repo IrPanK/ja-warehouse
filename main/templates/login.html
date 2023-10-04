@@ -2,53 +2,54 @@
 <title>Login</title>
 {% endblock meta %} {% block content %}
 
-<div class="login">
-    <h1>Login</h1>
+<div
+    class="login w-[85%] max-w-[400px] mx-auto mt-20 p-4 bg-lightBrown rounded-lg"
+>
+    <h1 class="text-center font-bold text-2xl pb-2">Login</h1>
 
     <form method="POST" action="">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        class="form-control"
-                    />
-                </td>
-            </tr>
-
-            <tr>
-                <td>Password:</td>
-                <td>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        class="form-control"
-                    />
-                </td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td>
-                    <input class="btn login_btn" type="submit" value="Login" />
-                </td>
-            </tr>
-        </table>
+        <div class="w-[80%] mx-auto flex flex-col gap-3">
+            <div>
+                <p>Username</p>
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    class="form-control w-full p-1 rounded"
+                />
+            </div>
+            <div>
+                <p>Password</p>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    class="form-control w-full p-1 rounded"
+                />
+            </div>
+            <input
+                class="btn login_btn w-full py-1 bg-brown rounded cursor-pointer text-white"
+                type="submit"
+                value="Login"
+            />
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <p>
+                Don't have an account yet?
+                <a
+                    href="{% url 'main:register' %}"
+                    class="text-blueLink hover:underline"
+                    >Register Now</a
+                >
+            </p>
+        </div>
     </form>
-
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %} Don't have an account yet?
-    <a href="{% url 'main:register' %}">Register Now</a>
 </div>
 
 {% endblock content %}

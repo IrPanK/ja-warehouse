@@ -13,6 +13,42 @@
     </div>
 </nav>
 
+<div id="overlay" class="hidden absolute left-0 top-0 w-screen h-screen bg-black/50"></div>
+<div
+    id="modal"
+    class="hidden absolute left-[50%] top-[20%] translate-x-[-50%] w-[90%] max-w-[500px] px-6 pb-5 pt-2 bg-lightBrown rounded z-[20]"
+>
+    <svg id="close-modal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute top-[12px] right-[12px] w-6 h-6 cursor-pointer">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+
+    <h2 class="text-center font-bold text-2xl">Add Item</h2>
+    <form id="form" class="flex flex-col gap-2" onsubmit="return false;">
+        {% csrf_token %}
+        <div class="flex flex-col gap-[2px]">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="p-1 rounded"></input>
+        </div>
+        <div class="flex flex-col gap-[2px]">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" class="p-1 rounded"></input>
+        </div>
+        <div class="flex flex-col gap-[2px]">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="p-1 rounded"></textarea>
+        </div>
+        <div class="flex flex-col gap-[2px]">
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" class="p-1 rounded"></input>
+        </div>
+        <div class="flex flex-col gap-[2px]">
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" class="p-1 rounded"></input>
+        </div>
+        <button type="submit" id="add-item" class="mt-2 py-1 rounded cursor-pointer text-white bg-brown">Add Item</button>
+    </form>
+</div>
+
 <div class="flex flex-col items-center gap-6 p-3">
     <div class="flex flex-col sm:flex-row justify-between gap-4">
         <div class="p-2 rounded-lg bg-lightBrown">
@@ -23,29 +59,65 @@
         <div
             class="flex flex-col items-center justify-center p-2 rounded-lg bg-lightBrown"
         >
-            <p class="font-bold text-4xl">{{items.count}}</p>
+            <p id="total-items" class="font-bold text-4xl">0</p>
             <span>Total Item</span>
         </div>
-        <a href="{% url 'main:create_item' %}" class="self-end">
-            <button class="w-max p-2 rounded-lg bg-lightBrown">
-                Add Item +
-            </button>
-        </a>
+        <button id="open-modal" class="self-end w-max p-2 rounded-lg bg-lightBrown">
+            Add Item +
+        </button>
     </div>
-    <div class="w-[95%] sm:w-[80%] flex flex-wrap justify-center gap-4">
-        {% for item in items %}
-        <div
+    <div
+        id="items_containter"
+        class="w-[95%] sm:w-[80%] flex flex-wrap justify-center gap-4"
+    ></div>
+</div>
+
+<br />
+
+
+<script>
+    const modalDiv = document.getElementById("modal");
+    const overlay = document.getElementById("overlay");
+    const addItemButton = document.getElementById("open-modal");
+    const closeModalButton = document.getElementById("close-modal");
+
+    overlay.onclick = closeModal
+    closeModalButton.onclick = closeModal
+    addItemButton.onclick = handleAddItem
+
+    function closeModal() {
+        modalDiv.classList.add("hidden")
+        overlay.classList.add("hidden")
+    }
+    
+    function handleAddItem() {
+        modalDiv.classList.remove("hidden")
+        overlay.classList.remove("hidden")
+    }
+
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) =>
+            res.json()
+        );
+    }
+
+    async function refreshItems() {
+        document.getElementById("items_containter").innerHTML = "";
+        htmlString = "";
+        const items = await getItems();
+        items.forEach((item) => {
+            htmlString += `<div
             class="flex flex-col justify-between gap-2 max-w-[320px] w-full py-2 px-4 bg-cream rounded last:bg-white"
         >
-            <p class="font-bold text-center text-lg">{{item.name}}</p>
-            <p>{{item.description}}</p>
+            <p class="font-bold text-center text-lg">${item.fields.name}</p>
+            <p>${item.fields.description}</p>
             <div class="flex justify-between">
-                <p>Rp{{item.price}}</p>
-                <span>Stok: {{item.amount}}</span>
+                <p>Rp${item.fields.price}</p>
+                <span>Stok: ${item.fields.amount}</span>
             </div>
-            <span>{{item.add_date}}</span>
+            <span>${item.fields.add_date}</span>
             <div class="flex justify-end gap-2">
-                <a href="{% url 'main:decrement_amount' id=item.pk %}">
+                <a href="decrement_amount/${item.pk}">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -61,7 +133,7 @@
                         />
                     </svg>
                 </a>
-                <a href="{% url 'main:increment_amount' id=item.pk %}">
+                <a href="increment_amount/${item.pk}">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -77,7 +149,7 @@
                         />
                     </svg>
                 </a>
-                <a href="{% url 'main:delete_item' id=item.pk %}">
+                <a href="delete_item/${item.pk}">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -94,11 +166,27 @@
                     </svg>
                 </a>
             </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+        </div>`;
+        });
 
-<br />
+        document.getElementById("items_containter").innerHTML = htmlString;
+        document.getElementById("total-items").innerHTML = items.length;
+    }
+
+    function addItem() {
+        fetch("{% url 'main:create-ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        closeModal()
+        return false
+    }
+
+    document.getElementById("add-item").onclick = addItem
+
+    refreshItems();
+</script>
 
 {% endblock content %}

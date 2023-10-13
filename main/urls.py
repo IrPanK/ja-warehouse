@@ -14,6 +14,7 @@ from main.views import (
     delete_item,
     get_item_json,
     add_item_ajax,
+    delete_item_ajax,
 )
 
 app_name = "main"
@@ -33,4 +34,5 @@ urlpatterns = [
     path("delete_item/<int:id>/", delete_item, name="delete_item"),
     path("get-item/", get_item_json, name="get_item_json"),
     path("create-ajax/", add_item_ajax, name="create-ajax"),
+    path("delete-ajax/", delete_item_ajax, name="delete_ajax"),
 ]

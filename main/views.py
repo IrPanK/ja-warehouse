@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from main.forms import ItemForm
@@ -160,3 +161,14 @@ def add_item_ajax(request):
         return HttpResponse(b"CREATED", status=201)
 
     return HttpResponseNotFound()
+
+
+@csrf_exempt
+def delete_item_ajax(request):
+    if request.method == "DELETE":
+        raw_body_decoded = request.body.decode("utf-8")
+        data = json.loads(raw_body_decoded)
+        item = Item.objects.filter(pk=data["id"])
+        item.delete()
+
+    return HttpResponse(b"OK", status=200)

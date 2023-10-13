@@ -251,3 +251,42 @@
     - Edit tampilan register.html menggunakan tailwind
     - Edit tampilan main.html menggunakan tailwind
     - Edit tampilan create_item.html menggunakan tailwind
+
+---
+
+# TUGAS 6
+
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+    - Asynchronous programming adalah dimana kode dapat dieksekusi secara bersamaan. Sehingga program dapat melanjutkan dengan menjalankan tugas lain sementara menunggu tugas tertentu selesai. Sehingga dapat meningkatkan efisiensi dan kinerja.
+
+    - Synchronous programming adalah dimana kode di eksekusi satu per satu atau line by line berdasarkan urutan yang ditulis. Sehinga tugas yang sedang dijalankan harus diselesaikan sebelum tugas berikutnya dapat dimulai. Oleh karena itu, tugas yang memakan waktu lama atau terblokir dapat menghambat kinerja aplikasi secara keseluruhan.
+
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+    Paradigma event-driven programming adalah program yang ditentukan oleh event, bukan berjalan secara linier atau sekuensial. Event dapat berupa interaksi dari user (klik tombol) atau kejadian yang dihasilkan oleh sistem (menerima data dari server). Contohnya adalah event onClick.
+
+3. Jelaskan penerapan asynchronous programming pada AJAX.
+
+    Penerapan asynchronous programming pada AJAX berarti permintaan data dapat dibuat dan ditangani secara bersamaan dengan eksekusi kode lainnya. Hal tersebut karena AJAX memungkinkan aplikasi web untuk berkomunikasi dengan server, menukar data, dan memperbarui halaman tanpa harus mereload seluruh halaman yang dimana membutuhkan waktu yang relatif lama sehingga diperlukan asynchronous agar kode yang lain dapat dijalankan bersamaan dan tidak perlu menunggu.
+
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+    - Fetch API adalah interface bawaan JavaScript. Fetch API mengembalikan Promise yang memudahkan penanganan operasi asinkron. Fetch API juga lebih fleksibel dalam hal pengaturan konfigurasi permintaan dan pengolahan respons dan memiliki sintaks yang lebih sederhana dan modern.
+
+    - jQuery adalah metode yang disediakan oleh library jQuery untuk melakukan HTTP request. jQuery kurang fleksibel dibandingkan dengan Fetch API dalam hal pengaturan konfigurasi permintaan dan pengolahan respons. Selain itu, menggunakan jQuery memerlukan penggunaan library jQuery yang dapat meningkatkan ukuran file dan mempengaruhi waktu pemuatan halaman.
+
+    - Sehingga menurut saya akan lebih baik menggunakan Fetch API karena sudah bawaan dari JavaScript, lebih leluasa terhadap kontrol atas HTTP request dan penanganan response, dan memiliki sintaks yang lebih sederhana dan modern.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    - Menambahkan tag script pada bagian paling bawah file main.html
+    - Tambahkan fungsi get_item_json pada views untuk mengembalikan item user dengan format JSON dan tambahkan pada urls
+    - Tambahkan fungsi getItems pada script untuk meng fetch item
+    - Tambahkan fungsi refreshItems pada script untuk mengisi div dengan id items_containter dengan card yang sudah berisi item-item dari fungsi getItems
+    - Jalankan fungsi refreshItems setiap kali tag script dijalankan
+    - Menambahkan modal dengan memanfaatkan add class dan remove class pada JS
+    - Buat modal dengan input sesuai kebutuhan item
+    - Tambahkan fungsi add_item_ajax pada views untuk menyimpan inputan item user dan tambahkan pada urls
+    - Tambahkan fungsi addItem pada script untuk mengirim data inputan user ke server lalu jalankan refreshItems setelah server berhasil mengeksekusi fungsi add_item_ajax. Setelah itu reset inputan dan tutup modal
+    - Melakukan perintah collectstatic dengan menjalankan python manage.py collectstatic

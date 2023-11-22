@@ -1,5 +1,6 @@
 from django.urls import path
 from main.views import (
+    create_product_flutter,
     show_main,
     create_item,
     show_xml,
@@ -35,4 +36,5 @@ urlpatterns = [
     path("get-item/", get_item_json, name="get_item_json"),
     path("create-ajax/", add_item_ajax, name="create-ajax"),
     path("delete-ajax/", delete_item_ajax, name="delete_ajax"),
+    path("create-flutter/", create_product_flutter, name="create_product_flutter"),
 ]
